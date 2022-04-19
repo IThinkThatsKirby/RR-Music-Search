@@ -5,6 +5,8 @@ import SearchBar from "./components/SearchBar";
 import AlbumView from "./components/AlbumView";
 import ArtistView from "./components/ArtistView";
 import { Fragment } from 'react/cjs/react.production.min'
+import React, { Suspense } from 'react'
+import Loading from './components/Loading.js'
 
 function App() {
 	let [search, setSearch] = useState("");
@@ -37,6 +39,7 @@ function App() {
 	return (
 		<div>
 			{message}
+			<Loading />
 			<Router>
 				<Routes>
 					<Route
@@ -44,7 +47,7 @@ function App() {
 						element={
 							<Fragment>
 								<SearchBar handleSearch={handleSearch} />
-								<Gallery data={data} />
+								<Suspense fallback={<Loading />}><Gallery data={data} /></Suspense>
 							</Fragment>
 						}
 					/>
