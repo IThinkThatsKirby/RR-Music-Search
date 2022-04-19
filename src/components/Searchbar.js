@@ -2,7 +2,7 @@
 import { useContext } from 'react'
 import { SearchContext } from "../context/SearchContext";
 
-function SearchBar(props) {
+const SearchBar = (props) => {
 	let {term, handleSearch} = useContext(SearchContext);
 
 	return (
